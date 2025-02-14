@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="email_template_loan_inquiry" model="mail.template">
+            <field name="name">Loan Inquiry Confirmation</field>
+            <field name="model_id" ref="model_loan_inquiry"/>
+            <field name="subject">Thank You for Your Loan Inquiry, {{object.client_name}}</field>
+            <field name="email_from">{{(user.email or 'support@yourcompany.com')}}</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                    <p>Dear <small t-esc="object.client_name"></small>,</p>
+                    <p>Thank you for your loan inquiry! We have received your request and our team will contact you shortly.</p>
+                    <p> here’s some information about our loan services:</p>
+                     <ul>
+                        <li><strong>Personal Loan</strong> – Interest Rate: 10.5% per annum</li>
+                        <li><strong>Home Loan</strong> – Interest Rate: 8.2% per annum</li>
+                        <li><strong>Vehicle Loan</strong> – Interest Rate: 9.0% per annum</li>
+                    </ul>
+
+                    <p>If you have any questions, feel free to contact us.</p>
+                    <p>Best Regards,</p>
+                    <p>Your Loan Team</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>
